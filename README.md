@@ -3,7 +3,7 @@
 
 
 
-The Kitchen Display System (KDS) is an application that fetches data using a fake API and displays it to the user. 
+In an above application that fetches data using a fake API and displays it to the user. 
 It utilizes *Retrofit* for data fetching and implements the MVVM architecture pattern for communication between fragments, activities, and the ViewModel. 
 The system is divided into two tabs, Current Orders and Complete Orders, with real-time updates on the item count displayed across both fragments.
 
