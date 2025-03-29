@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SecondRecyclerAdapter extends RecyclerView.Adapter<SecondRecyclerAdapter.ViewHolder> {
-    List<Meals> itemRealmClassList;
-    SharedViewModel sharedViewModel;
+    private List<Meals> itemRealmClassList;
+    private SharedViewModel sharedViewModel;
 
     public SecondRecyclerAdapter(SharedViewModel sharedViewModel) {
         this.sharedViewModel = sharedViewModel;
