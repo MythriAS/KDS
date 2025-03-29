@@ -10,7 +10,4 @@ public class ModelClass {
         return meals;
     }
 
-    public void setMeals(List<Meals> meals) {
-        this.meals = meals;
-    }
 }

@@ -1,5 +1,6 @@
 package com.example.mmjava;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,21 @@ public class SharedViewModel extends androidx.lifecycle.ViewModel {
 
     private final MutableLiveData<Integer> currentOrderCount = new MutableLiveData<>(0);
     private final MutableLiveData<Integer> completeOrderCount = new MutableLiveData<>(0);
+    private final MutableLiveData<List<Meals>> mealsLiveData = new MutableLiveData<>();
 
+    private final MealsRepository repository;
+
+    public SharedViewModel() {
+        repository = new MealsRepository();
+    }
+
+    public void fetchMeals() {
+        repository.fetchMeals().observeForever(mealsLiveData::setValue);
+    }
+
+    public LiveData<List<Meals>> getMeals() {
+        return mealsLiveData;
+    }
     public MutableLiveData<List<Meals>> getItemsInFirstRecycler() {
         return itemsInFirstRecycler;
     }

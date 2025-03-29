@@ -23,9 +23,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CurrentOrderFragment extends Fragment {
-    RecyclerView recyclerView;
-    List<Meals> mealsList;
-    FirstRecyclerAdapter firstRecyclerAdapter;
+    private RecyclerView recyclerView;
+    private FirstRecyclerAdapter firstRecyclerAdapter;
     private SharedViewModel sharedViewModel;
 
     @Nullable
@@ -37,46 +36,17 @@ public class CurrentOrderFragment extends Fragment {
 
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://www.themealdb.com/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        Service service = retrofit.create(Service.class);
-        Call<ModelClass> listCall = service.getModel();
-
         sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
 
-        sharedViewModel.getItemsInFirstRecycler().observe(getViewLifecycleOwner(), new Observer<List<Meals>>() {
-            @Override
-            public void onChanged(List<Meals> meals) {
-                mealsList = meals;
-                if (firstRecyclerAdapter == null) {
-                    firstRecyclerAdapter = new FirstRecyclerAdapter(mealsList, sharedViewModel);
-                    recyclerView.setAdapter(firstRecyclerAdapter);
-                } else {
-                    firstRecyclerAdapter.updateList(meals);
-                }
+        sharedViewModel.getMeals().observe(getViewLifecycleOwner(), meals -> {
+            if (firstRecyclerAdapter == null) {
+                firstRecyclerAdapter = new FirstRecyclerAdapter(meals, sharedViewModel);
+                recyclerView.setAdapter(firstRecyclerAdapter);
+            } else {
+                firstRecyclerAdapter.updateList(meals);
             }
         });
-
-        listCall.enqueue(new Callback<ModelClass>() {
-            @Override
-            public void onResponse(Call<ModelClass> call, Response<ModelClass> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    List<Meals> meals = response.body().getMeals();
-
-                    sharedViewModel.setInitialFirstList(meals);
-                } else {
-                    Toast.makeText(getContext(), "Failed to load data", Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ModelClass> call, Throwable throwable) {
-                Toast.makeText(getContext(), throwable.getLocalizedMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
+        sharedViewModel.fetchMeals();
         return view;
     }
 }

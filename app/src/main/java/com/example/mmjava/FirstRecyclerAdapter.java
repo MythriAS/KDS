@@ -16,11 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FirstRecyclerAdapter extends RecyclerView.Adapter<FirstRecyclerAdapter.ViewHolder> {
-    List<Meals> modelClassList;
-    SharedViewModel sharedViewModel;
+    private List<Meals> mealsList;
+    private SharedViewModel sharedViewModel;
 
-    public FirstRecyclerAdapter(List<Meals> modelClassList, SharedViewModel sharedViewModel) {
-        this.modelClassList = modelClassList;
+    public FirstRecyclerAdapter(List<Meals> mealsList, SharedViewModel sharedViewModel) {
+        this.mealsList = mealsList;
         this.sharedViewModel = sharedViewModel;
     }
 
@@ -34,7 +34,7 @@ public class FirstRecyclerAdapter extends RecyclerView.Adapter<FirstRecyclerAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Meals meal = modelClassList.get(position);
+        Meals meal = mealsList.get(position);
         holder.txtdesc.setText(meal.getStrMeal());
 
         Glide.with(holder.itemView.getContext())
@@ -52,11 +52,11 @@ public class FirstRecyclerAdapter extends RecyclerView.Adapter<FirstRecyclerAdap
 
     @Override
     public int getItemCount() {
-        return modelClassList.size();
+        return mealsList.size();
     }
 
     public void updateList(List<Meals> newList) {
-        modelClassList = new ArrayList<>(newList);
+        mealsList = new ArrayList<>(newList);
         notifyDataSetChanged();
     }
 
