@@ -1,4 +1,4 @@
-package com.example.mmjava;
+package com.example.mmjava.view.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,15 +10,18 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.mmjava.model.Meals;
+import com.example.mmjava.R;
+import com.example.mmjava.viewmodel.SharedViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SecondRecyclerAdapter extends RecyclerView.Adapter<SecondRecyclerAdapter.ViewHolder> {
+public class CompleteOrderRecyclerAdapter extends RecyclerView.Adapter<CompleteOrderRecyclerAdapter.ViewHolder> {
     private List<Meals> itemRealmClassList;
     private SharedViewModel sharedViewModel;
 
-    public SecondRecyclerAdapter(SharedViewModel sharedViewModel) {
+    public CompleteOrderRecyclerAdapter(SharedViewModel sharedViewModel) {
         this.sharedViewModel = sharedViewModel;
         this.itemRealmClassList = new ArrayList<>();
     }

@@ -1,4 +1,4 @@
-package com.example.mmjava;
+package com.example.mmjava.view.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,15 +11,18 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.mmjava.model.Meals;
+import com.example.mmjava.R;
+import com.example.mmjava.viewmodel.SharedViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FirstRecyclerAdapter extends RecyclerView.Adapter<FirstRecyclerAdapter.ViewHolder> {
+public class CurrentOrderRecyclerAdapter extends RecyclerView.Adapter<CurrentOrderRecyclerAdapter.ViewHolder> {
     private List<Meals> mealsList;
     private SharedViewModel sharedViewModel;
 
-    public FirstRecyclerAdapter(List<Meals> mealsList, SharedViewModel sharedViewModel) {
+    public CurrentOrderRecyclerAdapter(List<Meals> mealsList, SharedViewModel sharedViewModel) {
         this.mealsList = mealsList;
         this.sharedViewModel = sharedViewModel;
     }
@@ -44,7 +47,7 @@ public class FirstRecyclerAdapter extends RecyclerView.Adapter<FirstRecyclerAdap
         holder.btnBump.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sharedViewModel.addItemToSecondRecycler(meal);
+                sharedViewModel.moveItemToCompleted(meal);
             }
         });
 

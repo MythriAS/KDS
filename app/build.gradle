@@ -37,6 +37,8 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
+    //REALM
+    implementation libs.realm.android.library
     //RETROFIT
     implementation libs.retrofit
     implementation libs.converter.gson

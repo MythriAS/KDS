@@ -1,8 +1,8 @@
-package com.example.mmjava;
+package com.example.mmjava.model;
 
 import java.util.List;
 
-public class ModelClass {
+public class Orders {
 
     private List<Meals> meals;
 

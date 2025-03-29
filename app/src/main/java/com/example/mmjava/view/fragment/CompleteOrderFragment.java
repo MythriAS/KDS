@@ -1,4 +1,4 @@
-package com.example.mmjava;
+package com.example.mmjava.view.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,13 +10,16 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.mmjava.R;
+import com.example.mmjava.view.adapter.CompleteOrderRecyclerAdapter;
+import com.example.mmjava.viewmodel.SharedViewModel;
 
 public class CompleteOrderFragment extends Fragment{
 
     private RecyclerView recyclerViewSecond;
-    private SecondRecyclerAdapter secondRecyclerAdapter;
+    private CompleteOrderRecyclerAdapter completeOrderRecyclerAdapter;
     private SharedViewModel sharedViewModel;
     @Nullable
     @Override
@@ -27,10 +30,10 @@ public class CompleteOrderFragment extends Fragment{
         recyclerViewSecond.setLayoutManager(new GridLayoutManager(getContext(), 2));
         sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);  // Shared ViewModel
 
-        secondRecyclerAdapter = new SecondRecyclerAdapter(sharedViewModel );
-        recyclerViewSecond.setAdapter(secondRecyclerAdapter);
+        completeOrderRecyclerAdapter = new CompleteOrderRecyclerAdapter(sharedViewModel );
+        recyclerViewSecond.setAdapter(completeOrderRecyclerAdapter);
 
-        secondRecyclerAdapter.observeItems(getViewLifecycleOwner());
+        completeOrderRecyclerAdapter.observeItems(getViewLifecycleOwner());
         return view;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.mmjava;
+package com.example.mmjava.view.activity;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +12,10 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.mmjava.view.fragment.CompleteOrderFragment;
+import com.example.mmjava.view.fragment.CurrentOrderFragment;
+import com.example.mmjava.R;
+import com.example.mmjava.viewmodel.SharedViewModel;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
