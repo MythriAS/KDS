@@ -18,7 +18,6 @@ import com.example.mmjava.viewmodel.SharedViewModel;
 public class CurrentOrderFragment extends Fragment {
     private RecyclerView recyclerView;
     private CurrentOrderRecyclerAdapter firstRecyclerAdapter;
-
     private SharedViewModel sharedViewModel;
 
     @Nullable

@@ -14,6 +14,7 @@ public class SharedViewModel extends ViewModel {
     private final MutableLiveData<Integer> currentOrderCount = new MutableLiveData<>(0);
     private final MutableLiveData<Integer> completeOrderCount = new MutableLiveData<>(0);
 
+
     public SharedViewModel() {
         repository = new MealsRepository();
         mealsLiveData = repository.fetchMeals();

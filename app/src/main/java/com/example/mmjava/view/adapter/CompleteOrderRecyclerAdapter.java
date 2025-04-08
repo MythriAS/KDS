@@ -60,6 +60,7 @@ public class CompleteOrderRecyclerAdapter extends RecyclerView.Adapter<CompleteO
             txtAddedItem = itemView.findViewById(R.id.txt_added_product_name);
         }
     }
+
     public void observeItems(LifecycleOwner lifecycleOwner) {
         sharedViewModel.getItemsInSecondRecycler().observe(lifecycleOwner, items -> {
             itemRealmClassList.clear();

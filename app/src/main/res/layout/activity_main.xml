@@ -11,14 +11,10 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_current_order"
-            android:text="Current Order"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_complete_order"
-            android:text="Complete Order"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
